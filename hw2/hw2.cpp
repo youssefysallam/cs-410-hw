@@ -56,22 +56,35 @@ void askQuestion(std::string topic, int difficulty, int& score) {
 /*
 This function initiates the quiz for a specific player and difficulty level. It loops through
 multiple questions and ensures the player answers at least a minimum (3) correct amount
-before proceeding.
+before proceeding. I added extra if else statements so that if the character 'Stewie" is selected, 
+the dialouge is not from Stewie himself.
 */
 void startQuiz(std::string playerName, int difficulty) {
-    cout << "Stewie: Alright, " << playerName << ", let's see how smart you really are!\n";
+    if (playerName == "Stewie") {
+        cout << "Brian: Alright Stew, let's see what YOU got!\n";
+    }
+    else {
+    cout << "Stewie: Alright, " << playerName << ", let's see how smart you really are!\n";   
+    }
     int score = 0;
     for (int i = 0 ; i < 5; i ++) {
         askQuestion(difficulty, score);
     }
     cout << "You got " << score << "/5 correct!\n";
+    if (playerName == "Stewie") {
+        if (isPassing(score)) {
+            cout << "Stewie: HA! Was there really ever even any doubt?\n";
+        } else {
+            cout << "Brian: HA! You couldn't even pass your own quiz! In your own words 'Peter could even do better!' HA!\n";
+        }
+    } else {
     if (isPassing(score)) {
         cout << "Stewie: Fine, you win this round...\n";
     } else {
         cout << "Stewie: As expected, utterly pathetic.\n";
     }
+    }
 }
-
 /* 
 An inline function that randomly selects and displays one of Stewie’s signature insults
 when a player provides a wrong answer. Here’s a list of signature insults to use: 
