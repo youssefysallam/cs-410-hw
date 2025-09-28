@@ -62,15 +62,18 @@ the dialouge is not from Stewie himself.
 void startQuiz(std::string playerName, int difficulty) {
     if (playerName == "Stewie") {
         cout << "Brian: Alright Stew, let's see what YOU got!\n";
-    }
-    else {
+    } else {
     cout << "Stewie: Alright, " << playerName << ", let's see how smart you really are!\n";   
     }
+    
+    
     int score = 0;
     for (int i = 0 ; i < 5; i ++) {
         askQuestion(difficulty, score);
     }
     cout << "You got " << score << "/5 correct!\n";
+    
+    
     if (playerName == "Stewie") {
         if (isPassing(score)) {
             cout << "Stewie: HA! Was there really ever even any doubt?\n";
@@ -161,34 +164,3 @@ int main() {
     gameMenu();
     return 0;
 }
-
-/*
-SAMPLE OUTPUT: 
-Choose a character:
-1. Peter
-2. Lois
-3. Meg
-4. Chris
-5. Brian
-6. Stewie
-7. Exit
-> 3
-Stewie: Alright, Meg, let's see how smart you really are!
-What is 8 + 6? > 14
-Correct!
-What is 5 + 3? > 7
-Wrong! Moron!
-What is 12 + 9? > 21
-Correct!
-You got 2/3 correct!
-Stewie: Fine, you win this round...
-3
-Choose a character:
-1. Peter
-2. Lois
-3. Meg
-4. Chris
-5. Brian
-6. Stewie
-7. Exit
-*/
